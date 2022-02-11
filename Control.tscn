@@ -1,0 +1,72 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Bar/HealthDisplay.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Control.gd" type="Script" id=3]
+
+[node name="Control" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TimeBar1" parent="VBoxContainer" instance=ExtResource( 1 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 1024.0
+margin_bottom = 276.0
+
+[node name="TimeBar2" parent="VBoxContainer" instance=ExtResource( 1 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 280.0
+margin_right = 1024.0
+margin_bottom = 556.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+margin_top = 560.0
+margin_right = 1024.0
+margin_bottom = 600.0
+alignment = 1
+
+[node name="Start" type="Button" parent="VBoxContainer/HBoxContainer"]
+margin_left = 359.0
+margin_right = 441.0
+margin_bottom = 40.0
+text = "Start Timer"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Pause" type="Button" parent="VBoxContainer/HBoxContainer"]
+margin_left = 445.0
+margin_right = 495.0
+margin_bottom = 40.0
+text = "Pause"
+
+[node name="Reset" type="Button" parent="VBoxContainer/HBoxContainer"]
+margin_left = 499.0
+margin_right = 547.0
+margin_bottom = 40.0
+text = "Reset"
+
+[node name="Cycle" type="CheckButton" parent="VBoxContainer/HBoxContainer"]
+margin_left = 551.0
+margin_right = 665.0
+margin_bottom = 40.0
+text = "Cycle"
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/Start" to="." method="_on_Button_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/Pause" to="." method="_on_Pause_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/Reset" to="." method="_on_Reset_pressed"]
+[connection signal="toggled" from="VBoxContainer/HBoxContainer/Cycle" to="." method="_on_Cycle_toggled"]
