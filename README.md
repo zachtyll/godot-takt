@@ -1,2 +1,2 @@
 # godot-takt
-A takt visualisation software.
+A [takt](https://en.wikipedia.org/wiki/Takt_time) visualisation software.
