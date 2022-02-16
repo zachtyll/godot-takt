@@ -1,6 +1,5 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=2 format=2]
 
-[ext_resource path="res://Bar/HealthDisplay.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Control.gd" type="Script" id=3]
 
 [node name="Control" type="Control"]
@@ -13,60 +12,78 @@ __meta__ = {
 
 [node name="Timer" type="Timer" parent="."]
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="TimeBar1" parent="VBoxContainer" instance=ExtResource( 1 )]
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_right = 1024.0
-margin_bottom = 276.0
-
-[node name="TimeBar2" parent="VBoxContainer" instance=ExtResource( 1 )]
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_top = 280.0
-margin_right = 1024.0
-margin_bottom = 556.0
-
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
-margin_top = 560.0
-margin_right = 1024.0
+[node name="SidePanel" type="PanelContainer" parent="HBoxContainer"]
+margin_right = 128.0
 margin_bottom = 600.0
-alignment = 1
 
-[node name="Start" type="Button" parent="VBoxContainer/HBoxContainer"]
-margin_left = 359.0
-margin_right = 441.0
-margin_bottom = 40.0
+[node name="OptionsList" type="VBoxContainer" parent="HBoxContainer/SidePanel"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 121.0
+margin_bottom = 593.0
+
+[node name="AddCycle" type="Button" parent="HBoxContainer/SidePanel/OptionsList"]
+margin_right = 114.0
+margin_bottom = 20.0
+text = "Add new cycle"
+
+[node name="CycleTime" type="LineEdit" parent="HBoxContainer/SidePanel/OptionsList"]
+margin_top = 24.0
+margin_right = 114.0
+margin_bottom = 48.0
+placeholder_text = "Takt time sec."
+
+[node name="HSeparator" type="HSeparator" parent="HBoxContainer/SidePanel/OptionsList"]
+margin_top = 52.0
+margin_right = 114.0
+margin_bottom = 56.0
+
+[node name="Start" type="Button" parent="HBoxContainer/SidePanel/OptionsList"]
+margin_top = 60.0
+margin_right = 114.0
+margin_bottom = 80.0
 text = "Start Timer"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Pause" type="Button" parent="VBoxContainer/HBoxContainer"]
-margin_left = 445.0
-margin_right = 495.0
-margin_bottom = 40.0
+[node name="Pause" type="Button" parent="HBoxContainer/SidePanel/OptionsList"]
+margin_top = 84.0
+margin_right = 114.0
+margin_bottom = 104.0
 text = "Pause"
 
-[node name="Reset" type="Button" parent="VBoxContainer/HBoxContainer"]
-margin_left = 499.0
-margin_right = 547.0
-margin_bottom = 40.0
+[node name="Reset" type="Button" parent="HBoxContainer/SidePanel/OptionsList"]
+margin_top = 108.0
+margin_right = 114.0
+margin_bottom = 128.0
 text = "Reset"
 
-[node name="Cycle" type="CheckButton" parent="VBoxContainer/HBoxContainer"]
-margin_left = 551.0
-margin_right = 665.0
-margin_bottom = 40.0
+[node name="Cycle" type="CheckButton" parent="HBoxContainer/SidePanel/OptionsList"]
+margin_top = 132.0
+margin_right = 114.0
+margin_bottom = 172.0
 text = "Cycle"
+
+[node name="BarContainer" type="VBoxContainer" parent="HBoxContainer"]
+margin_left = 132.0
+margin_right = 1024.0
+margin_bottom = 600.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
-[connection signal="pressed" from="VBoxContainer/HBoxContainer/Start" to="." method="_on_Button_pressed"]
-[connection signal="pressed" from="VBoxContainer/HBoxContainer/Pause" to="." method="_on_Pause_pressed"]
-[connection signal="pressed" from="VBoxContainer/HBoxContainer/Reset" to="." method="_on_Reset_pressed"]
-[connection signal="toggled" from="VBoxContainer/HBoxContainer/Cycle" to="." method="_on_Cycle_toggled"]
+[connection signal="pressed" from="HBoxContainer/SidePanel/OptionsList/AddCycle" to="." method="_on_AddCycle_pressed"]
+[connection signal="pressed" from="HBoxContainer/SidePanel/OptionsList/Start" to="." method="_on_Button_pressed"]
+[connection signal="pressed" from="HBoxContainer/SidePanel/OptionsList/Pause" to="." method="_on_Pause_pressed"]
+[connection signal="pressed" from="HBoxContainer/SidePanel/OptionsList/Reset" to="." method="_on_Reset_pressed"]
+[connection signal="toggled" from="HBoxContainer/SidePanel/OptionsList/Cycle" to="." method="_on_Cycle_toggled"]

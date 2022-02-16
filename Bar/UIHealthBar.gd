@@ -5,6 +5,9 @@ var bar_red = preload("res://Bar/BarRed.png")
 var bar_green = preload("res://Bar/BarGreen.png")
 var bar_yellow = preload("res://Bar/BarYellow.png")
 
+var takt_time := 0
+
+
 onready var healthbar := $HealthBar
 onready var health_label := $CenterContainer/Label
 onready var tween := $Tween
@@ -15,8 +18,13 @@ func update_healthbar(new_health: float):
 	if not healthbar:
 		yield(self, "ready")
 	
-	health_label.text = "Time: %s" % new_health
+	# Set label units.
+	if new_health <= 60:
+		health_label.text = "Sekunder kvar: %s" % new_health
+	elif new_health >= 60:
+		health_label.text = "Minuter kvar: %s" % ceil(new_health / 60)
 	
+	# Set bar colour.
 	var percent = float(new_health / stats.full_duration)
 	healthbar.texture_progress = bar_green
 	if percent < 0.7:
@@ -25,6 +33,8 @@ func update_healthbar(new_health: float):
 		healthbar.texture_progress = bar_red
 	if percent <= 1:
 		show()
+	
+	# Animate bar.
 	tween.interpolate_property(
 		healthbar,
 		"value",
@@ -38,3 +48,7 @@ func update_healthbar(new_health: float):
 
 func _on_Stats_time_left_changed(new_health : int):
 	update_healthbar(new_health)
+
+
+func _ready():
+	stats.set_duration(takt_time)
