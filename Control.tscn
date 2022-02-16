@@ -72,6 +72,18 @@ margin_right = 114.0
 margin_bottom = 172.0
 text = "Cycle"
 
+[node name="Save" type="Button" parent="HBoxContainer/SidePanel/OptionsList"]
+margin_top = 176.0
+margin_right = 114.0
+margin_bottom = 196.0
+text = "Save Preset"
+
+[node name="Load" type="Button" parent="HBoxContainer/SidePanel/OptionsList"]
+margin_top = 200.0
+margin_right = 114.0
+margin_bottom = 220.0
+text = "Load Preset"
+
 [node name="BarContainer" type="VBoxContainer" parent="HBoxContainer"]
 margin_left = 132.0
 margin_right = 1024.0
@@ -87,3 +99,5 @@ __meta__ = {
 [connection signal="pressed" from="HBoxContainer/SidePanel/OptionsList/Pause" to="." method="_on_Pause_pressed"]
 [connection signal="pressed" from="HBoxContainer/SidePanel/OptionsList/Reset" to="." method="_on_Reset_pressed"]
 [connection signal="toggled" from="HBoxContainer/SidePanel/OptionsList/Cycle" to="." method="_on_Cycle_toggled"]
+[connection signal="pressed" from="HBoxContainer/SidePanel/OptionsList/Save" to="." method="_on_Save_pressed"]
+[connection signal="pressed" from="HBoxContainer/SidePanel/OptionsList/Load" to="." method="_on_Load_pressed"]

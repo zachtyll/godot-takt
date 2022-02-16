@@ -4,7 +4,9 @@
 [ext_resource path="res://Bar/UIHealthBar.gd" type="Script" id=2]
 [ext_resource path="res://Stats/Stats.tscn" type="PackedScene" id=3]
 
-[node name="TimeBar" type="Control"]
+[node name="TimeBar" type="Control" groups=[
+"Persist",
+]]
 anchor_right = 1.0
 anchor_bottom = 1.0
 size_flags_horizontal = 3
@@ -38,11 +40,10 @@ __meta__ = {
 }
 
 [node name="Label" type="Label" parent="CenterContainer"]
-margin_left = 498.0
+margin_left = 512.0
 margin_top = 293.0
-margin_right = 526.0
+margin_right = 512.0
 margin_bottom = 307.0
-text = "Test"
 valign = 1
 uppercase = true
 __meta__ = {

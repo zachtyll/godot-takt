@@ -36,3 +36,15 @@ func _on_AddCycle_pressed():
 	bar_instance.takt_time = new_cycle_time.text
 	bar_instance.cycling = cycling
 	bar_indicators.add_child(bar_instance)
+
+
+func _on_Save_pressed():
+	var save_err = Utilities.save_preset()
+	if save_err:
+		push_error("Error when saving!")
+
+
+func _on_Load_pressed():
+	var save_err = Utilities.load_preset()
+	if save_err:
+		push_error("Error when loading!")
