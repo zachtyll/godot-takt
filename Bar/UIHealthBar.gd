@@ -19,6 +19,8 @@ onready var stats := $Stats
 func update_healthbar(new_health: float):
 	if not healthbar:
 		yield(self, "ready")
+	elif not stats:
+		yield(self, "ready")
 	
 	# Set label units.
 	if new_health <= 60:
@@ -66,3 +68,4 @@ func _ready():
 	stats.set_duration(takt_time)
 	stats.set_time_left(time_left)
 	stats.set_cycling(cycling)
+	print(time_left)
