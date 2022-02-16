@@ -6,6 +6,7 @@ var bar_green = preload("res://Bar/BarGreen.png")
 var bar_yellow = preload("res://Bar/BarYellow.png")
 
 var takt_time := 0
+var cycling := false
 
 
 onready var healthbar := $HealthBar
@@ -52,3 +53,5 @@ func _on_Stats_time_left_changed(new_health : int):
 
 func _ready():
 	stats.set_duration(takt_time)
+	stats.set_cycling(cycling)
+	stats.reset()

@@ -52,5 +52,4 @@ __meta__ = {
 [node name="Stats" parent="." groups=[
 "Stats",
 ] instance=ExtResource( 3 )]
-full_duration = 3
 [connection signal="time_left_changed" from="Stats" to="." method="_on_Stats_time_left_changed"]
