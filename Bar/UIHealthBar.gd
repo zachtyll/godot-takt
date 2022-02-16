@@ -6,6 +6,7 @@ var bar_green = preload("res://Bar/BarGreen.png")
 var bar_yellow = preload("res://Bar/BarYellow.png")
 
 var takt_time := 0
+var time_left := 0
 var cycling := false
 
 
@@ -47,11 +48,21 @@ func update_healthbar(new_health: float):
 	tween.start()
 
 
+func save():
+	var save_dict = {
+		"filename" : get_filename(),
+		"parent" : get_parent().get_path(),
+		"takt_time" : stats.get_full_duration(),
+		"time_left" : stats.get_time_left()
+	}
+	return save_dict
+
+
 func _on_Stats_time_left_changed(new_health : int):
 	update_healthbar(new_health)
 
 
 func _ready():
 	stats.set_duration(takt_time)
+	stats.set_time_left(time_left)
 	stats.set_cycling(cycling)
-	stats.reset()
