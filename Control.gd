@@ -34,6 +34,7 @@ func _on_AddCycle_pressed():
 		return
 	var bar_instance = takt_indicator.instance()
 	bar_instance.takt_time = new_cycle_time.text
+	bar_instance.time_left = new_cycle_time.text
 	bar_instance.cycling = cycling
 	bar_indicators.add_child(bar_instance)
 
