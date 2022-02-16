@@ -49,3 +49,11 @@ func _on_Load_pressed():
 	var save_err = Utilities.load_preset()
 	if save_err:
 		push_error("Error when loading!")
+
+
+func _on_SavePreset_pressed():
+	var _err = Utilities.save_preset()
+
+
+func _on_LoadPreset_pressed():
+	var _err = Utilities.load_preset()

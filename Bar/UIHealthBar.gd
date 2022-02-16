@@ -68,4 +68,3 @@ func _ready():
 	stats.set_duration(takt_time)
 	stats.set_time_left(time_left)
 	stats.set_cycling(cycling)
-	print(time_left)
