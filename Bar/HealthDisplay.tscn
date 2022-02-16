@@ -38,10 +38,11 @@ __meta__ = {
 }
 
 [node name="Label" type="Label" parent="CenterContainer"]
-margin_left = 512.0
+margin_left = 498.0
 margin_top = 293.0
-margin_right = 512.0
+margin_right = 526.0
 margin_bottom = 307.0
+text = "Test"
 valign = 1
 uppercase = true
 __meta__ = {
@@ -51,5 +52,4 @@ __meta__ = {
 [node name="Stats" parent="." groups=[
 "Stats",
 ] instance=ExtResource( 3 )]
-full_duration = 3
 [connection signal="time_left_changed" from="Stats" to="." method="_on_Stats_time_left_changed"]

@@ -1,13 +1,12 @@
 extends Node
 
 
-# Unit is seconds
-export(int) var full_duration = 0 setget set_duration
-
-# Seconds left
-var time_left := 0 setget set_time_left, get_time_left
 # Cycle
 var cycling := false
+# Seconds left
+var time_left := 0 setget set_time_left, get_time_left
+# Unit is seconds
+var full_duration = 0 setget set_duration
 
 signal time_left_changed
 signal time_ran_out
@@ -76,7 +75,3 @@ func has_run_out() -> bool:
 		return true
 	else:
 		return false
-
-
-func _ready():
-	self.time_left = full_duration
