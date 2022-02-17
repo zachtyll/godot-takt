@@ -104,6 +104,70 @@ size_flags_vertical = 3
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="FileDialog" type="FileDialog" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -153.5
+margin_top = -65.0
+margin_right = 153.5
+margin_bottom = 65.0
+window_title = "Open a File"
+resizable = true
+dialog_text = "Hello World!"
+mode = 0
+access = 1
+current_dir = "user://"
+current_path = "user://"
+
+[node name="SaveDialog" type="ConfirmationDialog" parent="."]
+visible = true
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -100.0
+margin_top = -43.0
+margin_right = 100.0
+margin_bottom = 43.0
+window_title = "Input Preset Name"
+resizable = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MarginContainer" type="MarginContainer" parent="SaveDialog"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -92.0
+margin_top = -35.0
+margin_right = 92.0
+margin_bottom = 7.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="SaveDialog/MarginContainer"]
+margin_right = 184.0
+margin_bottom = 42.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="LineEdit" type="LineEdit" parent="SaveDialog/MarginContainer/VBoxContainer"]
+margin_right = 184.0
+margin_bottom = 24.0
+placeholder_text = "Preset Name"
+
+[node name="Label" type="Label" parent="SaveDialog/MarginContainer/VBoxContainer"]
+margin_top = 28.0
+margin_right = 184.0
+margin_bottom = 42.0
+align = 1
+valign = 1
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
 [connection signal="pressed" from="HBoxContainer/SidePanel/OptionsList/AddCycle" to="." method="_on_AddCycle_pressed"]
 [connection signal="pressed" from="HBoxContainer/SidePanel/OptionsList/Start" to="." method="_on_Button_pressed"]
@@ -112,3 +176,5 @@ __meta__ = {
 [connection signal="toggled" from="HBoxContainer/SidePanel/OptionsList/Cycle" to="." method="_on_Cycle_toggled"]
 [connection signal="pressed" from="HBoxContainer/SidePanel/OptionsList/SavePreset" to="." method="_on_SavePreset_pressed"]
 [connection signal="pressed" from="HBoxContainer/SidePanel/OptionsList/LoadPreset" to="." method="_on_LoadPreset_pressed"]
+[connection signal="file_selected" from="FileDialog" to="." method="_on_FileDialog_file_selected"]
+[connection signal="confirmed" from="SaveDialog" to="." method="_on_SaveDialog_confirmed"]

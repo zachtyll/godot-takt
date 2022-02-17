@@ -40,20 +40,32 @@ func _on_AddCycle_pressed():
 
 
 func _on_Save_pressed():
-	var save_err = Utilities.save_preset()
+	var save_err = Utilities.save_preset("Test")
 	if save_err:
 		push_error("Error when saving!")
 
 
-func _on_Load_pressed():
-	var save_err = Utilities.load_preset()
-	if save_err:
-		push_error("Error when loading!")
-
-
 func _on_SavePreset_pressed():
-	var _err = Utilities.save_preset()
+	$SaveDialog.show()
 
 
 func _on_LoadPreset_pressed():
-	var _err = Utilities.load_preset()
+	$FileDialog.show()
+
+
+func _on_FileDialog_file_selected(path):
+	var load_err = Utilities.load_preset(path)
+	if load_err:
+		push_error("Error when loading!")
+
+
+func _on_SaveDialog_confirmed():
+	var preset_name = $SaveDialog/MarginContainer/VBoxContainer/LineEdit.text
+	if preset_name.empty():
+		$SaveDialog/MarginContainer/VBoxContainer/Label.text = "Please insert a name."
+		return
+
+	var save_err = Utilities.save_preset(preset_name)
+	if save_err:
+		$SaveDialog/MarginContainer/VBoxContainer/Label.text = "Save error ocurred."
+		push_error("Error when saving!")
