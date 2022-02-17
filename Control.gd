@@ -35,6 +35,7 @@ func _on_AddCycle_pressed():
 	var bar_instance = takt_indicator.instance()
 	bar_instance.takt_time = new_cycle_time.text
 	bar_instance.time_left = new_cycle_time.text
+	print(cycling)
 	bar_instance.cycling = cycling
 	bar_indicators.add_child(bar_instance)
 
@@ -60,12 +61,14 @@ func _on_FileDialog_file_selected(path):
 
 
 func _on_SaveDialog_confirmed():
-	var preset_name = $SaveDialog/MarginContainer/VBoxContainer/LineEdit.text
+	var preset_name = $SaveDialog/MarginContainer/VBoxContainer/HBoxContainer/LineEdit.text
 	if preset_name.empty():
 		$SaveDialog/MarginContainer/VBoxContainer/Label.text = "Please insert a name."
 		return
 
 	var save_err = Utilities.save_preset(preset_name)
+	$SaveDialog/MarginContainer/VBoxContainer/HBoxContainer/LineEdit.text = ""
+	
 	if save_err:
 		$SaveDialog/MarginContainer/VBoxContainer/Label.text = "Save error ocurred."
 		push_error("Error when saving!")

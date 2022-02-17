@@ -10,6 +10,13 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Background" type="Panel" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="Timer" type="Timer" parent="."]
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
@@ -28,68 +35,79 @@ margin_left = 7.0
 margin_top = 7.0
 margin_right = 121.0
 margin_bottom = 593.0
+size_flags_vertical = 3
 
 [node name="AddCycle" type="Button" parent="HBoxContainer/SidePanel/OptionsList"]
 margin_right = 114.0
-margin_bottom = 20.0
+margin_bottom = 55.0
+size_flags_vertical = 3
 text = "Add new cycle"
 
 [node name="CycleTime" type="LineEdit" parent="HBoxContainer/SidePanel/OptionsList"]
-margin_top = 24.0
+margin_top = 59.0
 margin_right = 114.0
-margin_bottom = 48.0
+margin_bottom = 114.0
+size_flags_vertical = 3
 placeholder_text = "Takt time sec."
 
 [node name="HSeparator" type="HSeparator" parent="HBoxContainer/SidePanel/OptionsList"]
-margin_top = 52.0
+margin_top = 118.0
 margin_right = 114.0
-margin_bottom = 56.0
+margin_bottom = 173.0
+size_flags_vertical = 3
 
 [node name="Start" type="Button" parent="HBoxContainer/SidePanel/OptionsList"]
-margin_top = 60.0
+margin_top = 177.0
 margin_right = 114.0
-margin_bottom = 80.0
+margin_bottom = 232.0
+size_flags_vertical = 3
 text = "Start Timer"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Pause" type="Button" parent="HBoxContainer/SidePanel/OptionsList"]
-margin_top = 84.0
+margin_top = 236.0
 margin_right = 114.0
-margin_bottom = 104.0
+margin_bottom = 291.0
+size_flags_vertical = 3
 text = "Pause"
 
 [node name="Reset" type="Button" parent="HBoxContainer/SidePanel/OptionsList"]
-margin_top = 108.0
+margin_top = 295.0
 margin_right = 114.0
-margin_bottom = 128.0
+margin_bottom = 350.0
+size_flags_vertical = 3
 text = "Reset"
 
 [node name="Cycle" type="CheckButton" parent="HBoxContainer/SidePanel/OptionsList"]
-margin_top = 132.0
+margin_top = 354.0
 margin_right = 114.0
-margin_bottom = 172.0
+margin_bottom = 409.0
+size_flags_vertical = 3
 text = "Cycle"
 
 [node name="HSeparator2" type="HSeparator" parent="HBoxContainer/SidePanel/OptionsList"]
-margin_top = 176.0
+margin_top = 413.0
 margin_right = 114.0
-margin_bottom = 180.0
+margin_bottom = 468.0
+size_flags_vertical = 3
 
 [node name="SavePreset" type="Button" parent="HBoxContainer/SidePanel/OptionsList"]
-margin_top = 184.0
+margin_top = 472.0
 margin_right = 114.0
-margin_bottom = 204.0
+margin_bottom = 527.0
+size_flags_vertical = 3
 text = "Save Preset"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="LoadPreset" type="Button" parent="HBoxContainer/SidePanel/OptionsList"]
-margin_top = 208.0
+margin_top = 531.0
 margin_right = 114.0
-margin_bottom = 228.0
+margin_bottom = 586.0
+size_flags_vertical = 3
 text = "Load Preset"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -106,24 +124,21 @@ __meta__ = {
 }
 
 [node name="FileDialog" type="FileDialog" parent="."]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -153.5
-margin_top = -65.0
-margin_right = 153.5
-margin_bottom = 65.0
-window_title = "Open a File"
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_min_size = Vector2( 216, 256 )
+window_title = "Choose Preset"
 resizable = true
-dialog_text = "Hello World!"
 mode = 0
 access = 1
 current_dir = "user://"
-current_path = "user://"
+current_file = "Basic tripple.save"
+current_path = "user://Basic tripple.save"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="SaveDialog" type="ConfirmationDialog" parent="."]
-visible = true
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -157,10 +172,22 @@ margin_bottom = 42.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="LineEdit" type="LineEdit" parent="SaveDialog/MarginContainer/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="SaveDialog/MarginContainer/VBoxContainer"]
 margin_right = 184.0
 margin_bottom = 24.0
-placeholder_text = "Preset Name"
+
+[node name="Label" type="Label" parent="SaveDialog/MarginContainer/VBoxContainer/HBoxContainer"]
+margin_top = 5.0
+margin_right = 42.0
+margin_bottom = 19.0
+text = "Name:"
+
+[node name="LineEdit" type="LineEdit" parent="SaveDialog/MarginContainer/VBoxContainer/HBoxContainer"]
+margin_left = 46.0
+margin_right = 184.0
+margin_bottom = 24.0
+size_flags_horizontal = 3
+clear_button_enabled = true
 
 [node name="Label" type="Label" parent="SaveDialog/MarginContainer/VBoxContainer"]
 margin_top = 28.0
