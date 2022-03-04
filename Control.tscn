@@ -44,36 +44,9 @@ margin_right = 121.0
 margin_bottom = 593.0
 size_flags_vertical = 3
 
-[node name="EditScreen" type="Button" parent="HBoxContainer/SidePanel/OptionsList"]
-margin_right = 114.0
-margin_bottom = 49.0
-size_flags_vertical = 3
-text = "Edit Setup"
-
-[node name="AddCycle" type="Button" parent="HBoxContainer/SidePanel/OptionsList"]
-margin_top = 53.0
-margin_right = 114.0
-margin_bottom = 102.0
-size_flags_vertical = 3
-text = "Add new cycle"
-
-[node name="CycleTime" type="LineEdit" parent="HBoxContainer/SidePanel/OptionsList"]
-margin_top = 106.0
-margin_right = 114.0
-margin_bottom = 155.0
-size_flags_vertical = 3
-placeholder_text = "Takt time sec."
-
-[node name="HSeparator" type="HSeparator" parent="HBoxContainer/SidePanel/OptionsList"]
-margin_top = 159.0
-margin_right = 114.0
-margin_bottom = 208.0
-size_flags_vertical = 3
-
 [node name="Start" type="Button" parent="HBoxContainer/SidePanel/OptionsList"]
-margin_top = 212.0
 margin_right = 114.0
-margin_bottom = 261.0
+margin_bottom = 69.0
 size_flags_vertical = 3
 text = "Start Timer"
 __meta__ = {
@@ -81,36 +54,43 @@ __meta__ = {
 }
 
 [node name="Pause" type="Button" parent="HBoxContainer/SidePanel/OptionsList"]
-margin_top = 265.0
+margin_top = 73.0
 margin_right = 114.0
-margin_bottom = 314.0
+margin_bottom = 142.0
 size_flags_vertical = 3
 text = "Pause"
 
 [node name="Reset" type="Button" parent="HBoxContainer/SidePanel/OptionsList"]
-margin_top = 318.0
+margin_top = 146.0
 margin_right = 114.0
-margin_bottom = 367.0
+margin_bottom = 215.0
 size_flags_vertical = 3
 text = "Reset"
 
 [node name="Cycle" type="CheckButton" parent="HBoxContainer/SidePanel/OptionsList"]
-margin_top = 371.0
+margin_top = 219.0
 margin_right = 114.0
-margin_bottom = 420.0
+margin_bottom = 288.0
 size_flags_vertical = 3
 text = "Cycle"
 
-[node name="HSeparator2" type="HSeparator" parent="HBoxContainer/SidePanel/OptionsList"]
-margin_top = 424.0
+[node name="HSeparator" type="HSeparator" parent="HBoxContainer/SidePanel/OptionsList"]
+margin_top = 292.0
 margin_right = 114.0
-margin_bottom = 473.0
+margin_bottom = 361.0
 size_flags_vertical = 3
 
-[node name="SavePreset" type="Button" parent="HBoxContainer/SidePanel/OptionsList"]
-margin_top = 477.0
+[node name="EditScreen" type="Button" parent="HBoxContainer/SidePanel/OptionsList"]
+margin_top = 365.0
 margin_right = 114.0
-margin_bottom = 526.0
+margin_bottom = 434.0
+size_flags_vertical = 3
+text = "Edit Setup"
+
+[node name="SavePreset" type="Button" parent="HBoxContainer/SidePanel/OptionsList"]
+margin_top = 438.0
+margin_right = 114.0
+margin_bottom = 507.0
 size_flags_vertical = 3
 text = "Save Preset"
 __meta__ = {
@@ -118,7 +98,7 @@ __meta__ = {
 }
 
 [node name="LoadPreset" type="Button" parent="HBoxContainer/SidePanel/OptionsList"]
-margin_top = 530.0
+margin_top = 511.0
 margin_right = 114.0
 margin_bottom = 586.0
 size_flags_vertical = 3
@@ -223,12 +203,11 @@ size_flags_vertical = 1
 window_title = "Create New Cycle"
 resizable = true
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
-[connection signal="pressed" from="HBoxContainer/SidePanel/OptionsList/EditScreen" to="." method="_on_EditScreen_pressed"]
-[connection signal="pressed" from="HBoxContainer/SidePanel/OptionsList/AddCycle" to="." method="_on_AddCycle_pressed"]
 [connection signal="pressed" from="HBoxContainer/SidePanel/OptionsList/Start" to="." method="_on_Button_pressed"]
 [connection signal="pressed" from="HBoxContainer/SidePanel/OptionsList/Pause" to="." method="_on_Pause_pressed"]
 [connection signal="pressed" from="HBoxContainer/SidePanel/OptionsList/Reset" to="." method="_on_Reset_pressed"]
 [connection signal="toggled" from="HBoxContainer/SidePanel/OptionsList/Cycle" to="." method="_on_Cycle_toggled"]
+[connection signal="pressed" from="HBoxContainer/SidePanel/OptionsList/EditScreen" to="." method="_on_EditScreen_pressed"]
 [connection signal="pressed" from="HBoxContainer/SidePanel/OptionsList/SavePreset" to="." method="_on_SavePreset_pressed"]
 [connection signal="pressed" from="HBoxContainer/SidePanel/OptionsList/LoadPreset" to="." method="_on_LoadPreset_pressed"]
 [connection signal="file_selected" from="FileDialog" to="." method="_on_FileDialog_file_selected"]
