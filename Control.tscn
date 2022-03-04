@@ -136,7 +136,6 @@ __meta__ = {
 visible = false
 
 [node name="EditScreen" type="Control" parent="."]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 size_flags_horizontal = 3
@@ -190,7 +189,7 @@ size_flags_horizontal = 3
 alignment = 1
 
 [node name="Close" type="Button" parent="EditScreen/Background/VBoxContainer/HBoxContainer"]
-margin_right = 338.0
+margin_right = 1024.0
 margin_bottom = 50.0
 size_flags_horizontal = 3
 text = "Close"

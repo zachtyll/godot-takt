@@ -43,11 +43,13 @@ func _on_FileDialog_file_selected(path):
 
 
 func _on_EditScreen_pressed():
+	$Timer.stop()
 	var cycle_list = bar_indicators.get_children()
 	for cycle in cycle_list:
 		bar_indicators.remove_child(cycle)
 	for cycle in cycle_list:
 		$EditScreen.cycles_list.add_child(cycle)
+		cycle.show_controls()
 	$EditScreen.show()
 
 
@@ -57,6 +59,7 @@ func _on_SaveDialog_save_preset(preset_name : String):
 		push_error("Error when saving!")
 
 
+# Deprecated?
 func _on_EditScreen_cycles_list_items(cycles_list):
 	for cycle in bar_indicators.get_children():
 		bar_indicators.remove_child(cycle)

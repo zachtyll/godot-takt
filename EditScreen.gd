@@ -17,6 +17,8 @@ func _on_AddCycle_pressed():
 
 func _on_Close_pressed():
 	var cycles_list_items = cycles_list.get_children()
+	for cycle in cycles_list_items:
+		cycle.hide_controls()
 	_move_cycles()
 	self.hide()
 	emit_signal("cycles_list_items", cycles_list_items)
