@@ -1,3 +1,4 @@
+class_name Cycle
 extends Control
 
 
@@ -55,7 +56,8 @@ func save():
 		"filename" : get_filename(),
 		"parent" : get_parent().get_path(),
 		"takt_time" : stats.get_full_duration(),
-		"time_left" : stats.get_time_left()
+		"time_left" : stats.get_time_left(),
+		"name" : self.name
 	}
 	return save_dict
 
