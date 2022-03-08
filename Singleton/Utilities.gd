@@ -135,10 +135,12 @@ func list_files_in_directory(path):
 
 	return files
 
+
 # Set up directory structure.
 func _ready():
 	var dir = Directory.new()
 	if not dir.dir_exists("user://cycles"):
 		dir.make_dir("user://cycles")
-	else:
-		print("dir cycles found!")
+	
+	if not dir.dir_exists("user://presets"):
+		dir.make_dir("user://presets")

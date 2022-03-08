@@ -117,6 +117,9 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="SaveDialog" parent="." instance=ExtResource( 2 )]
+visible = false
+
 [node name="FileDialog" type="FileDialog" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -125,14 +128,11 @@ window_title = "Open a File"
 resizable = true
 mode = 0
 access = 1
-current_dir = "user://"
-current_path = "user://"
+current_dir = "user://presets"
+current_path = "user://presets/"
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
-[node name="SaveDialog" parent="." instance=ExtResource( 2 )]
-visible = false
 
 [node name="EditScreen" type="Control" parent="."]
 anchor_right = 1.0
@@ -211,15 +211,21 @@ window_title = "Create New Cycle"
 resizable = true
 
 [node name="FileDialog" type="FileDialog" parent="EditScreen"]
-visible = true
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -256.0
+margin_top = -172.0
+margin_right = 256.0
+margin_bottom = 84.0
+rect_min_size = Vector2( 512, 256 )
 window_title = "Open a File"
 mode = 0
 access = 1
-current_dir = "user://"
-current_file = "5.save"
-current_path = "user://5.save"
+current_dir = "user://cycles"
+current_file = "RoofLayout.save"
+current_path = "user://cycles/RoofLayout.save"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -231,8 +237,8 @@ __meta__ = {
 [connection signal="pressed" from="HBoxContainer/SidePanel/OptionsList/EditScreen" to="." method="_on_EditScreen_pressed"]
 [connection signal="pressed" from="HBoxContainer/SidePanel/OptionsList/SavePreset" to="." method="_on_SavePreset_pressed"]
 [connection signal="pressed" from="HBoxContainer/SidePanel/OptionsList/LoadPreset" to="." method="_on_LoadPreset_pressed"]
-[connection signal="file_selected" from="FileDialog" to="." method="_on_FileDialog_file_selected"]
 [connection signal="save_preset" from="SaveDialog" to="." method="_on_SaveDialog_save_preset"]
+[connection signal="file_selected" from="FileDialog" to="." method="_on_FileDialog_file_selected"]
 [connection signal="cycles_list_items" from="EditScreen" to="." method="_on_EditScreen_cycles_list_items"]
 [connection signal="pressed" from="EditScreen/Background/VBoxContainer/HBoxContainer/NewCycle" to="EditScreen" method="_on_AddCycle_pressed"]
 [connection signal="pressed" from="EditScreen/Background/VBoxContainer/HBoxContainer/LoadCycle" to="EditScreen" method="_on_LoadCycle_pressed"]

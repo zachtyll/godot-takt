@@ -28,11 +28,11 @@ func _on_Cycle_toggled(toggled:bool):
 
 
 func _on_SavePreset_pressed():
-	$SaveDialog.show()
+	$SaveDialog.popup()
 
 
 func _on_LoadPreset_pressed():
-	$FileDialog.show()
+	$FileDialog.popup()
 
 
 func _on_FileDialog_file_selected(path):
