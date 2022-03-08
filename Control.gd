@@ -1,9 +1,7 @@
 extends Control
 
-var takt_indicator := preload("res://Bar/HealthDisplay.tscn")
 var cycling := false
 
-onready var new_cycle_time := $HBoxContainer/SidePanel/OptionsList/CycleTime
 onready var bar_indicators := $HBoxContainer/BarContainer
 
 
@@ -29,22 +27,6 @@ func _on_Cycle_toggled(toggled:bool):
 	get_tree().call_group("Stats", "set_cycling", cycling)
 
 
-func _on_AddCycle_pressed():
-	if not int(new_cycle_time.text) > 0:
-		return
-	var bar_instance = takt_indicator.instance()
-	bar_instance.takt_time = new_cycle_time.text
-	bar_instance.time_left = new_cycle_time.text
-	print(cycling)
-	bar_instance.cycling = cycling
-	bar_indicators.add_child(bar_instance)
-
-
-func _on_Save_pressed():
-	var save_err = Utilities.save_preset("Test")
-	if save_err:
-		push_error("Error when saving!")
-
 
 func _on_SavePreset_pressed():
 	$SaveDialog.show()
@@ -60,15 +42,26 @@ func _on_FileDialog_file_selected(path):
 		push_error("Error when loading!")
 
 
-func _on_SaveDialog_confirmed():
-	var preset_name = $SaveDialog/MarginContainer/VBoxContainer/HBoxContainer/LineEdit.text
-	if preset_name.empty():
-		$SaveDialog/MarginContainer/VBoxContainer/Label.text = "Please insert a name."
-		return
+func _on_EditScreen_pressed():
+	$Timer.stop()
+	var cycle_list = bar_indicators.get_children()
+	for cycle in cycle_list:
+		bar_indicators.remove_child(cycle)
+	for cycle in cycle_list:
+		$EditScreen.cycles_list.add_child(cycle)
+		cycle.show_controls()
+	$EditScreen.show()
 
+
+func _on_SaveDialog_save_preset(preset_name : String):
 	var save_err = Utilities.save_preset(preset_name)
-	$SaveDialog/MarginContainer/VBoxContainer/HBoxContainer/LineEdit.text = ""
-	
 	if save_err:
-		$SaveDialog/MarginContainer/VBoxContainer/Label.text = "Save error ocurred."
 		push_error("Error when saving!")
+
+
+# Deprecated?
+func _on_EditScreen_cycles_list_items(cycles_list):
+	for cycle in bar_indicators.get_children():
+		bar_indicators.remove_child(cycle)
+	for cycle in cycles_list:
+		bar_indicators.add_child(cycle)

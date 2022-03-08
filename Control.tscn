@@ -1,10 +1,15 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=5 format=2]
 
+[ext_resource path="res://Popups/AddCycle.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Popups/SaveDialog.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Control.gd" type="Script" id=3]
+[ext_resource path="res://EditScreen.gd" type="Script" id=4]
 
 [node name="Control" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
 script = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -22,6 +27,8 @@ __meta__ = {
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -37,29 +44,9 @@ margin_right = 121.0
 margin_bottom = 593.0
 size_flags_vertical = 3
 
-[node name="AddCycle" type="Button" parent="HBoxContainer/SidePanel/OptionsList"]
-margin_right = 114.0
-margin_bottom = 55.0
-size_flags_vertical = 3
-text = "Add new cycle"
-
-[node name="CycleTime" type="LineEdit" parent="HBoxContainer/SidePanel/OptionsList"]
-margin_top = 59.0
-margin_right = 114.0
-margin_bottom = 114.0
-size_flags_vertical = 3
-placeholder_text = "Takt time sec."
-
-[node name="HSeparator" type="HSeparator" parent="HBoxContainer/SidePanel/OptionsList"]
-margin_top = 118.0
-margin_right = 114.0
-margin_bottom = 173.0
-size_flags_vertical = 3
-
 [node name="Start" type="Button" parent="HBoxContainer/SidePanel/OptionsList"]
-margin_top = 177.0
 margin_right = 114.0
-margin_bottom = 232.0
+margin_bottom = 69.0
 size_flags_vertical = 3
 text = "Start Timer"
 __meta__ = {
@@ -67,36 +54,43 @@ __meta__ = {
 }
 
 [node name="Pause" type="Button" parent="HBoxContainer/SidePanel/OptionsList"]
-margin_top = 236.0
+margin_top = 73.0
 margin_right = 114.0
-margin_bottom = 291.0
+margin_bottom = 142.0
 size_flags_vertical = 3
 text = "Pause"
 
 [node name="Reset" type="Button" parent="HBoxContainer/SidePanel/OptionsList"]
-margin_top = 295.0
+margin_top = 146.0
 margin_right = 114.0
-margin_bottom = 350.0
+margin_bottom = 215.0
 size_flags_vertical = 3
 text = "Reset"
 
 [node name="Cycle" type="CheckButton" parent="HBoxContainer/SidePanel/OptionsList"]
-margin_top = 354.0
+margin_top = 219.0
 margin_right = 114.0
-margin_bottom = 409.0
+margin_bottom = 288.0
 size_flags_vertical = 3
 text = "Cycle"
 
-[node name="HSeparator2" type="HSeparator" parent="HBoxContainer/SidePanel/OptionsList"]
-margin_top = 413.0
+[node name="HSeparator" type="HSeparator" parent="HBoxContainer/SidePanel/OptionsList"]
+margin_top = 292.0
 margin_right = 114.0
-margin_bottom = 468.0
+margin_bottom = 361.0
 size_flags_vertical = 3
 
-[node name="SavePreset" type="Button" parent="HBoxContainer/SidePanel/OptionsList"]
-margin_top = 472.0
+[node name="EditScreen" type="Button" parent="HBoxContainer/SidePanel/OptionsList"]
+margin_top = 365.0
 margin_right = 114.0
-margin_bottom = 527.0
+margin_bottom = 434.0
+size_flags_vertical = 3
+text = "Edit Setup"
+
+[node name="SavePreset" type="Button" parent="HBoxContainer/SidePanel/OptionsList"]
+margin_top = 438.0
+margin_right = 114.0
+margin_bottom = 507.0
 size_flags_vertical = 3
 text = "Save Preset"
 __meta__ = {
@@ -104,7 +98,7 @@ __meta__ = {
 }
 
 [node name="LoadPreset" type="Button" parent="HBoxContainer/SidePanel/OptionsList"]
-margin_top = 531.0
+margin_top = 511.0
 margin_right = 114.0
 margin_bottom = 586.0
 size_flags_vertical = 3
@@ -127,7 +121,7 @@ __meta__ = {
 anchor_right = 1.0
 anchor_bottom = 1.0
 rect_min_size = Vector2( 216, 256 )
-window_title = "Choose Preset"
+window_title = "Open a File"
 resizable = true
 mode = 0
 access = 1
@@ -138,70 +132,87 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="SaveDialog" type="ConfirmationDialog" parent="."]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -100.0
-margin_top = -43.0
-margin_right = 100.0
-margin_bottom = 43.0
-window_title = "Input Preset Name"
-resizable = true
+[node name="SaveDialog" parent="." instance=ExtResource( 2 )]
+visible = false
+
+[node name="EditScreen" type="Control" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="MarginContainer" type="MarginContainer" parent="SaveDialog"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -92.0
-margin_top = -35.0
-margin_right = 92.0
-margin_bottom = 7.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="VBoxContainer" type="VBoxContainer" parent="SaveDialog/MarginContainer"]
-margin_right = 184.0
-margin_bottom = 42.0
+[node name="Background" type="Panel" parent="EditScreen"]
+anchor_right = 1.0
+anchor_bottom = 1.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="HBoxContainer" type="HBoxContainer" parent="SaveDialog/MarginContainer/VBoxContainer"]
-margin_right = 184.0
-margin_bottom = 24.0
-
-[node name="Label" type="Label" parent="SaveDialog/MarginContainer/VBoxContainer/HBoxContainer"]
-margin_top = 5.0
-margin_right = 42.0
-margin_bottom = 19.0
-text = "Name:"
-
-[node name="LineEdit" type="LineEdit" parent="SaveDialog/MarginContainer/VBoxContainer/HBoxContainer"]
-margin_left = 46.0
-margin_right = 184.0
-margin_bottom = 24.0
+[node name="VBoxContainer" type="VBoxContainer" parent="EditScreen/Background"]
+anchor_right = 1.0
+anchor_bottom = 1.0
 size_flags_horizontal = 3
-clear_button_enabled = true
+size_flags_vertical = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="Label" type="Label" parent="SaveDialog/MarginContainer/VBoxContainer"]
-margin_top = 28.0
-margin_right = 184.0
-margin_bottom = 42.0
-align = 1
-valign = 1
+[node name="ScrollContainer" type="ScrollContainer" parent="EditScreen/Background/VBoxContainer"]
+margin_right = 1024.0
+margin_bottom = 492.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="CyclesList" type="VBoxContainer" parent="EditScreen/Background/VBoxContainer/ScrollContainer"]
+margin_right = 1024.0
+margin_bottom = 492.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="AddCycle" type="Button" parent="EditScreen/Background/VBoxContainer"]
+margin_top = 496.0
+margin_right = 1024.0
+margin_bottom = 546.0
+rect_min_size = Vector2( 0, 50 )
+size_flags_horizontal = 3
+text = "Add Cycle"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="EditScreen/Background/VBoxContainer"]
+margin_top = 550.0
+margin_right = 1024.0
+margin_bottom = 600.0
+rect_min_size = Vector2( 0, 50 )
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="Close" type="Button" parent="EditScreen/Background/VBoxContainer/HBoxContainer"]
+margin_right = 1024.0
+margin_bottom = 50.0
+size_flags_horizontal = 3
+text = "Close"
+
+[node name="AddCycle" parent="EditScreen" instance=ExtResource( 1 )]
+margin_left = -138.5
+margin_right = 138.5
+size_flags_horizontal = 1
+size_flags_vertical = 1
+window_title = "Create New Cycle"
+resizable = true
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
-[connection signal="pressed" from="HBoxContainer/SidePanel/OptionsList/AddCycle" to="." method="_on_AddCycle_pressed"]
 [connection signal="pressed" from="HBoxContainer/SidePanel/OptionsList/Start" to="." method="_on_Button_pressed"]
 [connection signal="pressed" from="HBoxContainer/SidePanel/OptionsList/Pause" to="." method="_on_Pause_pressed"]
 [connection signal="pressed" from="HBoxContainer/SidePanel/OptionsList/Reset" to="." method="_on_Reset_pressed"]
 [connection signal="toggled" from="HBoxContainer/SidePanel/OptionsList/Cycle" to="." method="_on_Cycle_toggled"]
+[connection signal="pressed" from="HBoxContainer/SidePanel/OptionsList/EditScreen" to="." method="_on_EditScreen_pressed"]
 [connection signal="pressed" from="HBoxContainer/SidePanel/OptionsList/SavePreset" to="." method="_on_SavePreset_pressed"]
 [connection signal="pressed" from="HBoxContainer/SidePanel/OptionsList/LoadPreset" to="." method="_on_LoadPreset_pressed"]
 [connection signal="file_selected" from="FileDialog" to="." method="_on_FileDialog_file_selected"]
-[connection signal="confirmed" from="SaveDialog" to="." method="_on_SaveDialog_confirmed"]
+[connection signal="save_preset" from="SaveDialog" to="." method="_on_SaveDialog_save_preset"]
+[connection signal="cycles_list_items" from="EditScreen" to="." method="_on_EditScreen_cycles_list_items"]
+[connection signal="pressed" from="EditScreen/Background/VBoxContainer/AddCycle" to="EditScreen" method="_on_AddCycle_pressed"]
+[connection signal="pressed" from="EditScreen/Background/VBoxContainer/HBoxContainer/Close" to="EditScreen" method="_on_Close_pressed"]
+[connection signal="new_cycle_added" from="EditScreen/AddCycle" to="EditScreen" method="_on_AddCycle_new_cycle_added"]

@@ -1,3 +1,4 @@
+class_name Cycle
 extends Control
 
 
@@ -8,7 +9,6 @@ var bar_yellow = preload("res://Bar/BarYellow.png")
 var takt_time := 0
 var time_left := 0
 var cycling := false
-
 
 onready var healthbar := $HealthBar
 onready var health_label := $CenterContainer/Label
@@ -55,16 +55,30 @@ func save():
 		"filename" : get_filename(),
 		"parent" : get_parent().get_path(),
 		"takt_time" : stats.get_full_duration(),
-		"time_left" : stats.get_time_left()
+		"time_left" : stats.get_time_left(),
+		"name" : self.name
 	}
 	return save_dict
+
+
+func hide_controls() -> void:
+	$VBoxContainer/Delete.hide()
+
+
+func show_controls() -> void:
+	$VBoxContainer/Delete.show()
 
 
 func _on_Stats_time_left_changed(new_health : int):
 	update_healthbar(new_health)
 
 
+func _on_Delete_pressed():
+	self.queue_free()
+
+
 func _ready():
 	stats.set_duration(takt_time)
 	stats.set_time_left(time_left)
 	stats.set_cycling(cycling)
+

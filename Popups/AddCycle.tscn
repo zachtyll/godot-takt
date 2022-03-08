@@ -1,0 +1,103 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Popups/AddCycle.gd" type="Script" id=1]
+
+[node name="AddCycle" type="ConfirmationDialog"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -150.0
+margin_top = -75.0
+margin_right = 150.0
+margin_bottom = 75.0
+rect_min_size = Vector2( 200, 150 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 8.0
+margin_top = 8.0
+margin_right = -8.0
+margin_bottom = -36.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GridContainer" type="GridContainer" parent="VBoxContainer"]
+margin_right = 284.0
+margin_bottom = 58.0
+size_flags_horizontal = 3
+custom_constants/vseparation = 10
+columns = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="VBoxContainer/GridContainer"]
+margin_top = 5.0
+margin_right = 75.0
+margin_bottom = 19.0
+text = "Part Name: "
+
+[node name="CycleName" type="LineEdit" parent="VBoxContainer/GridContainer"]
+margin_left = 79.0
+margin_right = 284.0
+margin_bottom = 24.0
+size_flags_horizontal = 3
+clear_button_enabled = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label2" type="Label" parent="VBoxContainer/GridContainer"]
+margin_top = 39.0
+margin_right = 75.0
+margin_bottom = 53.0
+text = "Cycle Time:"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/GridContainer"]
+margin_left = 79.0
+margin_top = 34.0
+margin_right = 284.0
+margin_bottom = 58.0
+
+[node name="DurationSeconds" type="LineEdit" parent="VBoxContainer/GridContainer/HBoxContainer"]
+margin_right = 65.0
+margin_bottom = 24.0
+size_flags_horizontal = 3
+clear_button_enabled = true
+placeholder_text = "Seconds"
+
+[node name="DurationMinutes" type="LineEdit" parent="VBoxContainer/GridContainer/HBoxContainer"]
+margin_left = 69.0
+margin_right = 134.0
+margin_bottom = 24.0
+size_flags_horizontal = 3
+clear_button_enabled = true
+placeholder_text = "Minutes"
+
+[node name="DurationHours" type="LineEdit" parent="VBoxContainer/GridContainer/HBoxContainer"]
+margin_left = 138.0
+margin_right = 205.0
+margin_bottom = 24.0
+size_flags_horizontal = 3
+clear_button_enabled = true
+placeholder_text = "Hours"
+
+[node name="StatusLabel" type="Label" parent="VBoxContainer"]
+margin_top = 62.0
+margin_right = 284.0
+margin_bottom = 76.0
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="confirmed" from="." to="." method="_on_AddCycle_confirmed"]
