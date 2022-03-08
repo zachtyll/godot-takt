@@ -44,9 +44,9 @@ func update_healthbar(new_health: float):
 		"value",
 		healthbar.value,
 		healthbar.max_value * percent,
-		0.2,
+		0.3,
 		Tween.TRANS_CUBIC,
-		Tween.EASE_OUT)
+		Tween.EASE_IN_OUT)
 	tween.start()
 
 
