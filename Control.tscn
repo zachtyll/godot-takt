@@ -136,7 +136,6 @@ __meta__ = {
 visible = false
 
 [node name="EditScreen" type="Control" parent="."]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 size_flags_horizontal = 3
@@ -173,25 +172,34 @@ margin_bottom = 492.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="AddCycle" type="Button" parent="EditScreen/Background/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="EditScreen/Background/VBoxContainer"]
 margin_top = 496.0
 margin_right = 1024.0
 margin_bottom = 546.0
 rect_min_size = Vector2( 0, 50 )
 size_flags_horizontal = 3
-text = "Add Cycle"
+alignment = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="EditScreen/Background/VBoxContainer"]
+[node name="NewCycle" type="Button" parent="EditScreen/Background/VBoxContainer/HBoxContainer"]
+margin_right = 510.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 0, 50 )
+size_flags_horizontal = 3
+text = "New Cycle"
+
+[node name="LoadCycle" type="Button" parent="EditScreen/Background/VBoxContainer/HBoxContainer"]
+margin_left = 514.0
+margin_right = 1024.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 0, 50 )
+size_flags_horizontal = 3
+text = "Load Cycle"
+
+[node name="Close" type="Button" parent="EditScreen/Background/VBoxContainer"]
 margin_top = 550.0
 margin_right = 1024.0
 margin_bottom = 600.0
 rect_min_size = Vector2( 0, 50 )
-size_flags_horizontal = 3
-alignment = 1
-
-[node name="Close" type="Button" parent="EditScreen/Background/VBoxContainer/HBoxContainer"]
-margin_right = 1024.0
-margin_bottom = 50.0
 size_flags_horizontal = 3
 text = "Close"
 
@@ -213,6 +221,7 @@ resizable = true
 [connection signal="file_selected" from="FileDialog" to="." method="_on_FileDialog_file_selected"]
 [connection signal="save_preset" from="SaveDialog" to="." method="_on_SaveDialog_save_preset"]
 [connection signal="cycles_list_items" from="EditScreen" to="." method="_on_EditScreen_cycles_list_items"]
-[connection signal="pressed" from="EditScreen/Background/VBoxContainer/AddCycle" to="EditScreen" method="_on_AddCycle_pressed"]
-[connection signal="pressed" from="EditScreen/Background/VBoxContainer/HBoxContainer/Close" to="EditScreen" method="_on_Close_pressed"]
+[connection signal="pressed" from="EditScreen/Background/VBoxContainer/HBoxContainer/NewCycle" to="EditScreen" method="_on_AddCycle_pressed"]
+[connection signal="pressed" from="EditScreen/Background/VBoxContainer/HBoxContainer/LoadCycle" to="." method="_on_LoadCycle_pressed"]
+[connection signal="pressed" from="EditScreen/Background/VBoxContainer/Close" to="EditScreen" method="_on_Close_pressed"]
 [connection signal="new_cycle_added" from="EditScreen/AddCycle" to="EditScreen" method="_on_AddCycle_new_cycle_added"]

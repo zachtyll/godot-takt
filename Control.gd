@@ -27,7 +27,6 @@ func _on_Cycle_toggled(toggled:bool):
 	get_tree().call_group("Stats", "set_cycling", cycling)
 
 
-
 func _on_SavePreset_pressed():
 	$SaveDialog.show()
 
@@ -65,3 +64,7 @@ func _on_EditScreen_cycles_list_items(cycles_list):
 		bar_indicators.remove_child(cycle)
 	for cycle in cycles_list:
 		bar_indicators.add_child(cycle)
+
+
+func _on_LoadCycle_pressed():
+	pass # Replace with function body.
