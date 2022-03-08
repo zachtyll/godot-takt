@@ -118,12 +118,13 @@ __meta__ = {
 }
 
 [node name="SaveDialog" parent="." instance=ExtResource( 2 )]
-visible = false
 
 [node name="FileDialog" type="FileDialog" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-rect_min_size = Vector2( 216, 256 )
+margin_right = -512.0
+margin_bottom = -344.0
+rect_min_size = Vector2( 512, 256 )
 window_title = "Open a File"
 resizable = true
 mode = 0
@@ -135,6 +136,7 @@ __meta__ = {
 }
 
 [node name="EditScreen" type="Control" parent="."]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 size_flags_horizontal = 3
@@ -211,6 +213,7 @@ window_title = "Create New Cycle"
 resizable = true
 
 [node name="FileDialog" type="FileDialog" parent="EditScreen"]
+visible = true
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5

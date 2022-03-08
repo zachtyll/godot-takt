@@ -12,7 +12,7 @@ func _move_cycles():
 
 
 func _on_AddCycle_pressed():
-	$AddCycle.popup()
+	$AddCycle.popup_centered()
 
 
 func _on_Close_pressed():
@@ -34,7 +34,7 @@ func _on_AddCycle_new_cycle_added(new_cycle, persist):
 
 
 func _on_LoadCycle_pressed():
-	$FileDialog.popup()
+	$FileDialog.popup_centered()
 
 
 func _on_FileDialog_file_selected(path):

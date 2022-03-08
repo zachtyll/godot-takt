@@ -2,7 +2,7 @@ extends Node
 
 
 func save_preset(file_name: String) -> int:
-	var file_path = "user://%s.save" % file_name
+	var file_path = "user://presets/%s.save" % file_name
 	var save_preset = File.new()
 	save_preset.open(file_path, File.WRITE)
 	var save_nodes = get_tree().get_nodes_in_group("Persist")
