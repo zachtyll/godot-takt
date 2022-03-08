@@ -64,7 +64,3 @@ func _on_EditScreen_cycles_list_items(cycles_list):
 		bar_indicators.remove_child(cycle)
 	for cycle in cycles_list:
 		bar_indicators.add_child(cycle)
-
-
-func _on_LoadCycle_pressed():
-	pass # Replace with function body.

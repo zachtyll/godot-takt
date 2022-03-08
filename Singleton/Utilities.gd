@@ -64,6 +64,27 @@ func load_preset(file: String):
 	save_presets.close()
 
 
+func save_cycle(cycle, file_name: String) -> int:
+	var file_path = "user://cycles/%s.save" % file_name
+	var save_preset = File.new()
+	save_preset.open(file_path, File.WRITE)
+	# Check the node is an instanced scene so it can be instanced again during load.
+	if cycle.filename.empty():
+		print("persistent node '%s' is not an instanced scene, skipped" % cycle.name)
+		
+	# Check the node has a save function.
+	if !cycle.has_method("save"):
+		print("persistent node '%s' is missing a save() function, skipped" % cycle.name)
+		
+	# Call the node's save function.
+	var node_data = cycle.call("save")
+	# Store the save dictionary as a new line in the save file.
+	save_preset.store_line(to_json(node_data))
+	save_preset.close()
+	
+	return OK
+
+
 func load_cycle(file: String):
 	var save_presets = File.new()
 	if not save_presets.file_exists(file):
@@ -113,3 +134,11 @@ func list_files_in_directory(path):
 	dir.list_dir_end()
 
 	return files
+
+# Set up directory structure.
+func _ready():
+	var dir = Directory.new()
+	if not dir.dir_exists("user://cycles"):
+		dir.make_dir("user://cycles")
+	else:
+		print("dir cycles found!")

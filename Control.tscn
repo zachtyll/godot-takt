@@ -126,8 +126,7 @@ resizable = true
 mode = 0
 access = 1
 current_dir = "user://"
-current_file = "Basic tripple.save"
-current_path = "user://Basic tripple.save"
+current_path = "user://"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -210,6 +209,20 @@ size_flags_horizontal = 1
 size_flags_vertical = 1
 window_title = "Create New Cycle"
 resizable = true
+
+[node name="FileDialog" type="FileDialog" parent="EditScreen"]
+visible = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+window_title = "Open a File"
+mode = 0
+access = 1
+current_dir = "user://"
+current_file = "5.save"
+current_path = "user://5.save"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
 [connection signal="pressed" from="HBoxContainer/SidePanel/OptionsList/Start" to="." method="_on_Button_pressed"]
 [connection signal="pressed" from="HBoxContainer/SidePanel/OptionsList/Pause" to="." method="_on_Pause_pressed"]
@@ -222,6 +235,7 @@ resizable = true
 [connection signal="save_preset" from="SaveDialog" to="." method="_on_SaveDialog_save_preset"]
 [connection signal="cycles_list_items" from="EditScreen" to="." method="_on_EditScreen_cycles_list_items"]
 [connection signal="pressed" from="EditScreen/Background/VBoxContainer/HBoxContainer/NewCycle" to="EditScreen" method="_on_AddCycle_pressed"]
-[connection signal="pressed" from="EditScreen/Background/VBoxContainer/HBoxContainer/LoadCycle" to="." method="_on_LoadCycle_pressed"]
+[connection signal="pressed" from="EditScreen/Background/VBoxContainer/HBoxContainer/LoadCycle" to="EditScreen" method="_on_LoadCycle_pressed"]
 [connection signal="pressed" from="EditScreen/Background/VBoxContainer/Close" to="EditScreen" method="_on_Close_pressed"]
 [connection signal="new_cycle_added" from="EditScreen/AddCycle" to="EditScreen" method="_on_AddCycle_new_cycle_added"]
+[connection signal="file_selected" from="EditScreen/FileDialog" to="EditScreen" method="_on_FileDialog_file_selected"]

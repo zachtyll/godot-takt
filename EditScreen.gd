@@ -28,4 +28,16 @@ func _on_AddCycle_new_cycle_added(new_cycle, persist):
 	cycles_list.add_child(new_cycle)
 	
 	if persist:
-		print("THIS CYCLE SHOULD BE SAVED!")
+		var save_err = Utilities.save_cycle(new_cycle, new_cycle.name)
+		if save_err:
+			push_error("Error when saving!")
+
+
+func _on_LoadCycle_pressed():
+	$FileDialog.show()
+
+
+func _on_FileDialog_file_selected(path):
+	var load_err = Utilities.load_cycle(path)
+	if load_err:
+		push_error("Error when loading!")
