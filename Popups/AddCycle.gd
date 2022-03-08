@@ -2,6 +2,8 @@ extends ConfirmationDialog
 
 const takt_indicator := preload("res://Bar/HealthDisplay.tscn")
 
+var persist := false
+
 onready var cycle_name := $VBoxContainer/GridContainer/CycleName
 onready var duration_seconds := $VBoxContainer/GridContainer/HBoxContainer/DurationSeconds
 onready var duration_minutes := $VBoxContainer/GridContainer/HBoxContainer/DurationMinutes
@@ -72,5 +74,9 @@ func _on_AddCycle_confirmed():
 	new_cycle.time_left = total_time
 	new_cycle.name = cycle_name.text
 	
-	emit_signal("new_cycle_added", new_cycle)
+	emit_signal("new_cycle_added", new_cycle, persist)
 	
+
+
+func _on_CheckButton_toggled(button_pressed):
+	persist = button_pressed

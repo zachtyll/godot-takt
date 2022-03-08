@@ -24,5 +24,8 @@ func _on_Close_pressed():
 	emit_signal("cycles_list_items", cycles_list_items)
 
 
-func _on_AddCycle_new_cycle_added(new_cycle):
+func _on_AddCycle_new_cycle_added(new_cycle, persist):
 	cycles_list.add_child(new_cycle)
+	
+	if persist:
+		print("THIS CYCLE SHOULD BE SAVED!")

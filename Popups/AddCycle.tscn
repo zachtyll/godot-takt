@@ -11,7 +11,7 @@ margin_left = -150.0
 margin_top = -75.0
 margin_right = 150.0
 margin_bottom = 75.0
-rect_min_size = Vector2( 200, 150 )
+rect_min_size = Vector2( 200, 200 )
 size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource( 1 )
@@ -22,16 +22,16 @@ __meta__ = {
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 8.0
-margin_top = 8.0
-margin_right = -8.0
-margin_bottom = -36.0
+margin_left = 5.0
+margin_top = 5.0
+margin_right = -5.0
+margin_bottom = -40.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="GridContainer" type="GridContainer" parent="VBoxContainer"]
-margin_right = 284.0
+margin_right = 290.0
 margin_bottom = 58.0
 size_flags_horizontal = 3
 custom_constants/vseparation = 10
@@ -48,7 +48,7 @@ text = "Part Name: "
 
 [node name="CycleName" type="LineEdit" parent="VBoxContainer/GridContainer"]
 margin_left = 79.0
-margin_right = 284.0
+margin_right = 290.0
 margin_bottom = 24.0
 size_flags_horizontal = 3
 clear_button_enabled = true
@@ -65,39 +65,47 @@ text = "Cycle Time:"
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/GridContainer"]
 margin_left = 79.0
 margin_top = 34.0
-margin_right = 284.0
+margin_right = 290.0
 margin_bottom = 58.0
 
 [node name="DurationSeconds" type="LineEdit" parent="VBoxContainer/GridContainer/HBoxContainer"]
-margin_right = 65.0
+margin_right = 67.0
 margin_bottom = 24.0
 size_flags_horizontal = 3
 clear_button_enabled = true
 placeholder_text = "Seconds"
 
 [node name="DurationMinutes" type="LineEdit" parent="VBoxContainer/GridContainer/HBoxContainer"]
-margin_left = 69.0
-margin_right = 134.0
+margin_left = 71.0
+margin_right = 138.0
 margin_bottom = 24.0
 size_flags_horizontal = 3
 clear_button_enabled = true
 placeholder_text = "Minutes"
 
 [node name="DurationHours" type="LineEdit" parent="VBoxContainer/GridContainer/HBoxContainer"]
-margin_left = 138.0
-margin_right = 205.0
+margin_left = 142.0
+margin_right = 211.0
 margin_bottom = 24.0
 size_flags_horizontal = 3
 clear_button_enabled = true
 placeholder_text = "Hours"
 
-[node name="StatusLabel" type="Label" parent="VBoxContainer"]
+[node name="CheckButton" type="CheckButton" parent="VBoxContainer"]
 margin_top = 62.0
-margin_right = 284.0
-margin_bottom = 76.0
+margin_right = 290.0
+margin_bottom = 102.0
+size_flags_horizontal = 3
+text = "Save Cycle:"
+
+[node name="StatusLabel" type="Label" parent="VBoxContainer"]
+margin_top = 106.0
+margin_right = 290.0
+margin_bottom = 120.0
 align = 1
 valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 [connection signal="confirmed" from="." to="." method="_on_AddCycle_confirmed"]
+[connection signal="toggled" from="VBoxContainer/CheckButton" to="." method="_on_CheckButton_toggled"]
