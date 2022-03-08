@@ -27,13 +27,12 @@ func _on_Cycle_toggled(toggled:bool):
 	get_tree().call_group("Stats", "set_cycling", cycling)
 
 
-
 func _on_SavePreset_pressed():
-	$SaveDialog.show()
+	$SaveDialog.popup_centered()
 
 
 func _on_LoadPreset_pressed():
-	$FileDialog.show()
+	$FileDialog.popup_centered()
 
 
 func _on_FileDialog_file_selected(path):

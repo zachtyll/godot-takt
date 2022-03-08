@@ -20,6 +20,7 @@ func _on_OK_pressed():
 			status_label.text = "Please provide a name for the preset."
 		0:
 			emit_signal("save_preset", name_line.text)
+			self.hide()
 
 
 func _on_Cancel_pressed():
